@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO-DO</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="stat-container">
+        <div class="details">
+          <div class="app-detail">
+            <h1>To-Do Tasks</h1>
+            <p>Keep progressing! You are doing great!</p>
+          </div>
+          <div class="progress-bar">
+            <div id="progress"></div>
+          </div>
+        </div>
+        <div class="stat-number" id="taskCount">0 / 0</div>
+      </div>
+      <form action="" class="task-form">
+        <input
+          type="text"
+          placeholder="Enter your task on mission..."
+          id="inputTask"
+        />
+        <button type="submit" id="addButton">
+          <span class="material-symbols-outlined"> add </span>
+        </button>
+      </form>
+      <ul class="list-container" id="taskList"></ul>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
