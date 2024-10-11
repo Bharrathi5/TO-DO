@@ -14,16 +14,16 @@ const saveTask = () => {
 };
 
 const addTask = () => {
-  const text = document.getElementById("inputTask").value.trim();
+  const text = document.getElementById("inputTask");
+  const input = text.value.trim();
 
-  if (text) {
-    tasks.push({ text: text, completed: false });
+  if (input) {
+    tasks.push({ text: input, completed: false });
     updateTaskList();
     updateStats();
+    saveTask();
+    text.value = "";
   }
-  updateTaskList();
-  updateStats();
-  saveTask();
 };
 
 const toggleTaskComplete = (index) => {
@@ -52,12 +52,8 @@ const editTask = (index) => {
 const updateStats = () => {
   const completedTasks = tasks.filter((task) => task.completed).length;
   const totalTask = tasks.length;
-  const progress = (completedTasks / totalTask) * 100;
+  const progress = totalTask === 0 ? 0 : (completedTasks / totalTask) * 100;
   const progressBar = document.getElementById("progress");
-  progressBar.setAttribute(
-    "style",
-    "background-color: rgb(0, 255, 102); height: 13px; margin: 20px 0px; border-radius: 7px;"
-  );
   progressBar.style.width = `${progress}%`;
   document.getElementById(
     "taskCount"
@@ -76,7 +72,7 @@ const updateTaskList = () => {
                         }">
                             <input type="checkbox" class="checkbox" ${
                               task.completed ? "checked" : ""
-                            }/>
+                            } onchange="toggleTaskComplete(${index})"/>
                             <p>${task.text}</P>
                         </div>
                         <div id="taskIcon">
@@ -84,7 +80,6 @@ const updateTaskList = () => {
                             <span class="material-symbols-outlined" onClick="deleteTask(${index})">delete</span>
                         </div>
                     <div> `;
-    taskItem.addEventListener("change", () => toggleTaskComplete(index));
     taskList.append(taskItem);
   });
 };
