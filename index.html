@@ -11,7 +11,24 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="authentication">
+      <div class="auth">
+        <h1>Login/ Register</h1>
+        <form id="authForm">
+          <input type="text" id="username" placeholder="Username" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <button id="registerButton">Register</button>
+          <button id="loginButton">Login</button>
+        </form>
+        <div id="message"></div>
+      </div>
+    </div>
+    <div class="todo-container">
       <div class="stat-container">
         <div class="details">
           <div class="app-detail">
