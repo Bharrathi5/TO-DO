@@ -65,7 +65,8 @@ body::before {
   gap: 10px;
 }
 
-.auth-form button {
+.auth-form button,
+.header button {
   width: 80px;
   background: rgba(255, 255, 255, 0.352);
   border: 1px solid rgb(255, 255, 255);
@@ -77,6 +78,12 @@ body::before {
   justify-content: center;
   padding-top: 1px;
   margin: auto;
+}
+
+.header {
+  display: flex;
+  margin: 15px 30px;
+  justify-content: space-between;
 }
 
 .stat-container {

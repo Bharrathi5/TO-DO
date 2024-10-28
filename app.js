@@ -28,14 +28,39 @@ async function authenticateUser(endpoint) {
   if (response.ok && endpoint === "login") {
     localStorage.setItem("token", data.token);
     document.getElementById("message").textContent = "Login successful!";
-     document.getElementById("todo").style.display = "block";
-     document.getElementById("auth").style.display = "none"; 
+    checkAuth();
   } else {
     document.getElementById("message").textContent = data.error || data.message;
   }
 }
 
+function checkAuth() {
+  const token = localStorage.getItem("token");
+  const authContainer = document.getElementById("auth");
+  const todoContainer = document.getElementById("todo");
+
+  if (token) {
+    authContainer.style.display = "none";
+    todoContainer.style.display = "block";
+  } else {
+    authContainer.style.display = "block";
+    todoContainer.style.display = "none";
+  }
+}
+
+const logout = () => {
+  localStorage.removeItem("token");
+  document.getElementById("username").value = "";
+  document.getElementById("password").value = "";
+  document.getElementById("message").textContent = "";
+  alert("Logged out successfully!");
+  checkAuth();
+};
+
 //to-do task app
+
+let tasks = [];
+
 document.addEventListener("DOMContentLoaded", () => {
   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
   if (storedTasks) {
@@ -44,8 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateStats();
   }
 });
-
-let tasks = [];
 
 const saveTask = () => {
   localStorage.setItem("tasks", JSON.stringify(tasks));

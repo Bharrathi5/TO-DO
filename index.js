@@ -10,6 +10,7 @@ const port = process.env.PORT || 5000;
 const key = process.env.SECRET_KEY;
 
 const users = [];
+const tasks = {}; 
 
 app.use(cors());
 app.use(express.json());
@@ -39,7 +40,7 @@ app.post("/login", async (req, res) => {
   if (!isValid) return res.status(400).json({ error: "Invalid Password" });
 
   const token = jwt.sign({ username }, key, { expiresIn: "1h" });
-  res.json({ token });
+  res.json({ token , tasks: tasks[username] });
 });
 
 app.listen(port, () =>

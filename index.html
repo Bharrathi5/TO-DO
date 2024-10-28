@@ -30,31 +30,39 @@
         <div id="message"></div>
       </div>
     </div>
-    <div class="todo-container" id="todo" style="display:none;">
-      <div class="stat-container">
-        <div class="details">
-          <div class="app-detail">
-            <h1>To-Do Tasks</h1>
-            <p>Keep progressing! You are doing great!</p>
-          </div>
-          <div id="progress-bar">
-            <div id="progress"></div>
-          </div>
-        </div>
-        <div class="stat-number" id="taskCount">0 / 0</div>
+    <div class="todo-app" id="todo" style="display: none">
+      <div class="header">
+        <div>TASKER</div>
+        <div><button onclick="logout()">Logout</button></div>
       </div>
-      <form action="" class="task-form">
-        <input
-          type="text"
-          placeholder="Enter your task on mission..."
-          id="inputTask"
-        />
-        <button type="submit" id="addButton">
-          <span class="material-symbols-outlined"> add </span>
-        </button>
-      </form>
-      <ul class="list-container" id="taskList"></ul>
+      <p id="logoutMessage"></p>
+      <div class="todo-container">
+        <div class="stat-container">
+          <div class="details">
+            <div class="app-detail">
+              <h1>To-Do Tasks</h1>
+              <p>Keep progressing! You are doing great!</p>
+            </div>
+            <div id="progress-bar">
+              <div id="progress"></div>
+            </div>
+          </div>
+          <div class="stat-number" id="taskCount">0 / 0</div>
+        </div>
+        <form action="" class="task-form">
+          <input
+            type="text"
+            placeholder="Enter your task on mission..."
+            id="inputTask"
+          />
+          <button type="submit" id="addButton">
+            <span class="material-symbols-outlined"> add </span>
+          </button>
+        </form>
+        <ul class="list-container" id="taskList"></ul>
+      </div>
     </div>
+
     <script src="app.js"></script>
   </body>
 </html>
