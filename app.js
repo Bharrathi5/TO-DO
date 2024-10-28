@@ -1,3 +1,41 @@
+//to-do auhentication
+const apiUrl = "http://localhost:5000";
+
+document
+  .getElementById("registerButton")
+  .addEventListener("click", async (e) => {
+    e.preventDefault();
+    await authenticateUser("register");
+  });
+
+document.getElementById("loginButton").addEventListener("click", async (e) => {
+  e.preventDefault();
+  await authenticateUser("login");
+});
+
+async function authenticateUser(endpoint) {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  const response = await fetch(`${apiUrl}/${endpoint}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+
+  const data = await response.json();
+
+  if (response.ok && endpoint === "login") {
+    localStorage.setItem("token", data.token);
+    document.getElementById("message").textContent = "Login successful!";
+     document.getElementById("todo").style.display = "block";
+     document.getElementById("auth").style.display = "none"; 
+  } else {
+    document.getElementById("message").textContent = data.error || data.message;
+  }
+}
+
+//to-do task app
 document.addEventListener("DOMContentLoaded", () => {
   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
   if (storedTasks) {

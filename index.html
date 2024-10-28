@@ -11,24 +11,26 @@
     />
   </head>
   <body>
-    <div class="authentication">
+    <div class="authentication" id="auth">
       <div class="auth">
         <h1>Login/ Register</h1>
-        <form id="authForm">
-          <input type="text" id="username" placeholder="Username" required />
+        <form id="authForm" class="auth-form">
+          <input type="text" id="username" placeholder="Username*" required />
           <input
             type="password"
             id="password"
-            placeholder="Password"
+            placeholder="Password*"
             required
           />
-          <button id="registerButton">Register</button>
-          <button id="loginButton">Login</button>
+          <div class="auth-button">
+            <button id="registerButton">Register</button>
+            <button id="loginButton">Login</button>
+          </div>
         </form>
         <div id="message"></div>
       </div>
     </div>
-    <div class="todo-container">
+    <div class="todo-container" id="todo" style="display:none;">
       <div class="stat-container">
         <div class="details">
           <div class="app-detail">
